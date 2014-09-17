@@ -3,6 +3,10 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+h1 {
+  vertical-align: middle;
+}
+
 body {
   background: chartreuse;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
