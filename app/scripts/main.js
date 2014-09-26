@@ -8,34 +8,64 @@ $(function() {
 
 // var hit = Math.floor(Math.random()*5 + 1);
 
-function batarang(enemy) {
-  if (hit > 3) {
-      return batman.batarangAttack(enemy) ;
-    } else {
-      console.log("you missed");
-    }
-}
+
 
 function club(hero) {
   if (hit > 3) {
-      return thug.clubAttack(hero) ;
+      console.log('Thug hit you with a club');
+      return thug.clubAttack(hero);
     } else {
-      console.log("you missed");
+      console.log("Thug missed");
     }
 }
 
-$('.attack').on ('click', function() {
+$('.punch').on ('click', function() {
   hit = Math.floor(Math.random()*10);
-  console.log(thug.getHealth());
-  console.log(batman.getHealth());
-  console.log(batarang(thug));
-  console.log(thug.getHealth());
+  console.log('Thug: ' + thug.getHealth());
+  console.log('Batman: ' + batman.getHealth());
+  punch(thug);
+  console.log('Thug: ' + thug.getHealth());
+
+  setTimeout(function() {
+    hit = Math.floor(Math.random()*10);
+    console.log('Thug attacks back');
+    console.log('Batman: ' + batman.getHealth());
+    console.log('Thug: ' + thug.getHealth());
+    club(batman);
+    console.log('Batman: ' + batman.getHealth());
+  }, 500);
 });
 
-$('.thugAttack').on ('click', function() {
+$('.kick').on ('click', function() {
   hit = Math.floor(Math.random()*10);
-  console.log(batman.getHealth());
-  console.log(thug.getHealth());
-  console.log(club(batman));
-  console.log(batman.getHealth());
+  console.log('Thug: ' + thug.getHealth());
+  console.log('Batman: ' + batman.getHealth());
+  kick(thug);
+  console.log('Thug: ' + thug.getHealth());
+
+  setTimeout(function() {
+    hit = Math.floor(Math.random()*10);
+    console.log('Thug attacks back');
+    console.log('Batman: ' + batman.getHealth());
+    console.log('Thug: ' + thug.getHealth());
+    club(batman);
+    console.log('Batman: ' + batman.getHealth());
+  }, 500);
+});
+
+$('.batarang').on ('click', function() {
+  hit = Math.floor(Math.random()*10);
+  console.log('Thug: ' + thug.getHealth());
+  console.log('Batman: ' + batman.getHealth());
+  batarang(thug);
+  console.log('Thug: ' + thug.getHealth());
+
+  setTimeout(function() {
+    hit = Math.floor(Math.random()*10);
+    console.log('Thug attacks back');
+    console.log('Batman: ' + batman.getHealth());
+    console.log('Thug: ' + thug.getHealth());
+    club(batman);
+    console.log('Batman: ' + batman.getHealth());
+  }, 500);
 });

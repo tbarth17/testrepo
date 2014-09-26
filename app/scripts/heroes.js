@@ -34,8 +34,32 @@ Batman.prototype.kickAttack = function(enemy) {
   enemy.health = (enemy.health - (Math.floor(Math.random()*70) + 140));
 };
 
+function batarang(enemy) {
+  if (hit >= 3) {
+      console.log('Batman hit with the batarang');
+      return batman.batarangAttack(enemy) ;
+    } else {
+      console.log("Batman missed");
+    }
+};
 
+function punch(enemy) {
+  if (hit >= 4) {
+      console.log('Batman punched');
+      return batman.punchAttack(enemy) ;
+    } else {
+      console.log("Batman missed");
+    }
+};
 
+function kick(enemy) {
+  if (hit >= 5) {
+      console.log('Batman kicked');
+      return batman.batarangAttack(enemy) ;
+    } else {
+      console.log("Batman missed");
+    }
+}
 
 // Yeti
 
@@ -64,7 +88,32 @@ Yeti.prototype.kick = function(enemy) {
   enemy.health = (enemy.health - (Math.floor(Math.random()*60) + 120));
 };
 
-
+// function batarang(enemy) {
+//   if (hit >= 3) {
+//       console.log('Batman hit with the batarang');
+//       return batma.batarangAttack(enemy) ;
+//     } else {
+//       console.log("Batman missed");
+//     }
+// };
+//
+// function punch(enemy) {
+//   if (hit >= 4) {
+//       console.log('Batman punched');
+//       return batman.punchAttack(enemy) ;
+//     } else {
+//       console.log("Batman missed");
+//     }
+// };
+//
+// function kick(enemy) {
+//   if (hit >= 5) {
+//       console.log('Batman kicked');
+//       return batman.batarangAttack(enemy) ;
+//     } else {
+//       console.log("Batman missed");
+//     }
+// }
 
 // Jackaloupe
 
