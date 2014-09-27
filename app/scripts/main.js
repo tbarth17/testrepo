@@ -10,41 +10,29 @@ $(function() {
 
 // var hit = Math.floor(Math.random()*5 + 1);
 
-
-
-function club(hero) {
-  hit = Math.floor(Math.random()*10);
-  if (hit > 3) {
-      console.log('Thug hit you with a club');
-      return thug.clubAttack(hero);
-    } else {
-      console.log("Thug missed");
-    }
-}
-
 $('.generate').on('click', function() {
-  hit1 = Math.floor(Math.random()*10);
+  var hit1 = Math.floor(Math.random()*10);
   if (hit1 <=5) {
     enemy1 = new Hoodlum;
-  } else if (8>= hit > 5) {
+  } else if (8.5>= hit1 && hit1 > 5) {
     enemy1 = new Ruffian;
   } else {
     enemy1 = new Thug;
   }
 
-  hit2 = Math.floor(Math.random()*10);
+  var hit2 = Math.floor(Math.random()*10);
   if (hit2 <=5) {
     enemy2 = new Hoodlum;
-  } else if (8>= hit > 5) {
+  } else if (8.5>= hit2 && hit2 > 5) {
     enemy2 = new Ruffian;
   } else {
     enemy2 = new Thug;
   }
 
-  hit3 = Math.floor(Math.random()*10);
+  var hit3 = Math.floor(Math.random()*10);
   if (hit3 <=5) {
     enemy3 = new Hoodlum;
-  } else if (8>= hit > 5) {
+  } else if (8.5>= hit3 && hit3 > 5) {
     enemy3 = new Ruffian;
   } else {
     enemy3 = new Thug;
@@ -83,9 +71,8 @@ $('.enemy3').on('click', function() {
 console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
 
     setTimeout(function() {
-      console.log('Thug attacks back');
+      console.log(enemy1.name + ' attacks back');
       console.log('Batman: ' + batman.getHealth());
-      console.log('Thug: ' + thug.getHealth());
       club(batman);
       console.log('Batman: ' + batman.getHealth());
     }, 500);
