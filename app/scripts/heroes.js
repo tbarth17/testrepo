@@ -22,43 +22,43 @@ Batman.prototype.getName = function () {
   return this.name;
 };
 
-Batman.prototype.batarangAttack = function (enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*30) + 60));
+Batman.prototype.punchAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*50) + 100));
 };
 
-Batman.prototype.punchAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*50) + 100));
+Batman.prototype.batarangAttack = function () {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*30) + 60));
 };
 
-Batman.prototype.kickAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*70) + 140));
+Batman.prototype.kickAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*70) + 140));
 };
 
-function batarang(enemy) {
+function batarang() {
   hit = Math.floor(Math.random()*10);
   if (hit >= 3) {
       console.log('Batman hit with the batarang');
-      return batman.batarangAttack(enemy) ;
+      selectedHero.batarangAttack() ;
     } else {
       console.log("Batman missed");
     }
 };
 
-function punch(enemy) {
+function punch() {
   hit = Math.floor(Math.random()*10);
   if (hit >= 4) {
       console.log('Batman punched');
-      return batman.punchAttack(enemy) ;
+      selectedHero.punchAttack() ;
     } else {
       console.log("Batman missed");
     }
 };
 
-function kick(enemy) {
+function kick() {
   hit = Math.floor(Math.random()*10);
   if (hit >= 5) {
       console.log('Batman kicked');
-      return batman.batarangAttack(enemy) ;
+      selectedHero.kickAttack() ;
     } else {
       console.log("Batman missed");
     }
@@ -79,42 +79,43 @@ Yeti.prototype.getName = function () {
   return this.name;
 };
 
-Yeti.prototype.bashAttack = function (enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*20) + 40));
+Yeti.prototype.bashAttack = function () {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*20) + 40));
 };
 
-Yeti.prototype.smashAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*40) + 80));
+Yeti.prototype.smashAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*40) + 80));
 };
 
-Yeti.prototype.pummelAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*60) + 120));
+Yeti.prototype.whallopAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*60) + 120));
 };
 
-function bash(enemy) {
+function bash() {
   hit = Math.floor(Math.random()*10);
   if (hit >= 3) {
       console.log('Yeti bashed!');
-      return yeti.bashAttack(enemy) ;
+      selectedHero.bashAttack() ;
     } else {
       console.log("Yeti missed!");
     }
 };
 
-function smash(enemy) {
+function smash() {
   hit = Math.floor(Math.random()*10);
   if (hit >= 4) {
       console.log('Yeti smashed!');
-      return yeti.smashAttack(enemy) ;
+      selectedHero.smashAttack() ;
     } else {
       console.log("Yeti missed!");
     }
 };
 
-function pummel(enemy) {
+function whallop() {
+  hit = Math.floor(Math.random()*10);
   if (hit >= 5) {
-      console.log('Yeti pummeled!');
-      return batman.batarangAttack(enemy) ;
+      console.log('Yeti whalloped!');
+      selectedHero.whallopAttack() ;
     } else {
       console.log("Yeti missed!");
     }
@@ -135,14 +136,44 @@ Jackaloupe.prototype.getName = function () {
   return this.name;
 };
 
-Jackaloupe.prototype.stabAttack = function (enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*50) + 90));
+Jackaloupe.prototype.stabAttack = function () {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*50) + 90));
 };
 
-Jackaloupe.prototype.maulAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*70) + 140));
+Jackaloupe.prototype.maulAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*70) + 140));
 };
 
-Jackaloupe.prototype.flyingRabbitKickAttack = function(enemy) {
-  enemy.health = (enemy.health - (Math.floor(Math.random()*90) + 190));
+Jackaloupe.prototype.flyingRabbitKickAttack = function() {
+  selectedEnemy.health = (selectedEnemy.health - (Math.floor(Math.random()*90) + 190));
 };
+
+function stab() {
+  hit = Math.floor(Math.random()*10);
+  if (hit >= 3) {
+      console.log('Jackaloupe stabbed!');
+      selectedHero.stabAttack() ;
+    } else {
+      console.log("Jackaloupe missed!");
+    }
+};
+
+function maul() {
+  hit = Math.floor(Math.random()*10);
+  if (hit >= 4) {
+      console.log('Jackaloupe mauled!');
+      selectedHero.maulAttack() ;
+    } else {
+      console.log("Jackaloupe missed!");
+    }
+};
+
+function flyingRabbitKick() {
+  hit = Math.floor(Math.random()*10);
+  if (hit >= 5) {
+      console.log('Jackaloupe used Flying Rabbit Kick!');
+      selectedHero.flyingRabbitKickAttack() ;
+    } else {
+      console.log("Jackaloupe missed!");
+    }
+}

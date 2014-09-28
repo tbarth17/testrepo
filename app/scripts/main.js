@@ -1,14 +1,16 @@
-var thug, ruffian, hooligan, yeti, batman, hit, enemy1, enemy2, enemy3, selectedEnemy;
+var thug, ruffian, hooligan, yeti, batman, hit, enemy1, enemy2, enemy3, selectedEnemy, selectedHero;
 $(function() {
-  thug = new Thug;
-  ruffian = new Ruffian;
-  hoodlum = new Hoodlum;
-  batman = new Batman;
-  yeti = new Yeti;
+  // thug = new Thug;
+  // ruffian = new Ruffian;
+  // hoodlum = new Hoodlum;
+  // batman = new Batman;
+  // yeti = new Yeti;
 
 });
 
 // var hit = Math.floor(Math.random()*5 + 1);
+
+////Generate random enemy////
 
 $('.generate').on('click', function() {
   var hit1 = Math.floor(Math.random()*10);
@@ -43,7 +45,24 @@ $('.generate').on('click', function() {
   console.log(enemy3);
 });
 
-////Enemies////
+////Select Hero////
+
+$('.batman').on('click', function() {
+  selectedHero = new Batman;
+  console.log(selectedHero);
+});
+
+$('.yeti').on('click', function() {
+  selectedHero = new Yeti;
+  console.log(selectedHero);
+});
+
+$('.jackaloupe').on('click', function() {
+  selectedHero = new Jackaloupe;
+  console.log(selectedHero);
+});
+
+////Select Enemies////
 
 $('.enemy1').on('click', function() {
   selectedEnemy = enemy1;
@@ -60,69 +79,275 @@ $('.enemy3').on('click', function() {
   console.log(selectedEnemy);
 })
 
+////Enemies random attack functions////
+
+function randomThugAttack(hero){
+  var attack = Math.floor(Math.random()*10);
+  if (attack <=5) {
+    beat(hero);
+  } else if (8.5>= attack && attack > 5) {
+    club(hero);
+  } else {
+    bludgeon(hero);
+  }
+
+}
+
+function randomRuffianAttack(hero){
+  var attack = Math.floor(Math.random()*10);
+  if (attack <=5) {
+    knife(hero);
+  } else if (8.5>= attack && attack > 5) {
+    pummel(hero);
+  } else {
+    cudgel(hero);
+  }
+
+}
+
+function randomHooliganAttack(hero){
+  var attack = Math.floor(Math.random()*10);
+  if (attack <=5) {
+    pocketKnife(hero);
+  } else if (8.5>= attack && attack > 5) {
+    baton(hero);
+  } else {
+    shank(hero);
+  }
+
+}
+
+function enemy1RandomRetaliation() {
+  if (enemy1 instanceof Thug) {
+    randomThugAttack();
+  } else if (enemy1 instanceof Ruffian){
+    randomRuffianAttack();
+  } else {
+    randomHooliganAttack();
+  }
+}
+
+function enemy2RandomRetaliation() {
+  if (enemy2 instanceof Thug) {
+    randomThugAttack();
+  } else if (enemy2 instanceof Ruffian){
+    randomRuffianAttack();
+  } else {
+    randomHooliganAttack();
+  }
+}
+
+function enemy3RandomRetaliation() {
+  if (enemy3 instanceof Thug) {
+    randomThugAttack();
+  } else if (enemy3 instanceof Ruffian){
+    randomRuffianAttack();
+  } else {
+    randomHooliganAttack();
+  }
+}
+
 
 ////Batman////
 
 
   $('.punch').on ('click', function() {
     console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
-    console.log('Batman: ' + batman.getHealth());
+    console.log(selectedHero.name + ': ' + selectedHero.getHealth());
     punch(selectedEnemy);
 console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
 
     setTimeout(function() {
-      console.log(enemy1.name + ' attacks back');
-      console.log('Batman: ' + batman.getHealth());
-      club(batman);
-      console.log('Batman: ' + batman.getHealth());
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
     }, 500);
   });
 
 $('.kick').on ('click', function() {
-  console.log('Thug: ' + thug.getHealth());
-  console.log('Batman: ' + batman.getHealth());
-  kick(thug);
-  console.log('Thug: ' + thug.getHealth());
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  kick(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
 
   setTimeout(function() {
-    console.log('Thug attacks back');
-    console.log('Batman: ' + batman.getHealth());
-    console.log('Thug: ' + thug.getHealth());
-    club(batman);
-    console.log('Batman: ' + batman.getHealth());
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
   }, 500);
 });
 
 $('.batarang').on ('click', function() {
-  console.log('Thug: ' + thug.getHealth());
-  console.log('Batman: ' + batman.getHealth());
-  batarang(thug);
-  console.log('Thug: ' + thug.getHealth());
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  batarang(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
 
   setTimeout(function() {
-    console.log('Thug attacks back');
-    console.log('Batman: ' + batman.getHealth());
-    console.log('Thug: ' + thug.getHealth());
-    club(batman);
-    console.log('Batman: ' + batman.getHealth());
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
   }, 500);
 });
 
 /////Yeti////
-//
-// $('.bash').on ('click', function() {
-//   hit = Math.floor(Math.random()*10);
-//   console.log('Thug: ' + thug.getHealth());
-//   console.log('Batman: ' + batman.getHealth());
-//   batarang(thug);
-//   console.log('Thug: ' + thug.getHealth());
-//
-//   setTimeout(function() {
-//     hit = Math.floor(Math.random()*10);
-//     console.log('Thug attacks back');
-//     console.log('Batman: ' + batman.getHealth());
-//     console.log('Thug: ' + thug.getHealth());
-//     club(batman);
-//     console.log('Batman: ' + batman.getHealth());
-//   }, 500);
-// });
+
+$('.bash').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  bash(selectedEnemy);
+console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+  }, 500);
+});
+
+$('.smash').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  smash(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+}, 500);
+});
+
+$('.whallop').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  whallop(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+}, 500);
+});
+
+////Jackaloupe////
+$('.stab').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  stab(selectedEnemy);
+console.log(selectedEnemy.name + ': ' +  selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+  }, 500);
+});
+
+$('.maul').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  maul(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+}, 500);
+});
+
+$('.flyingRabbitKick').on ('click', function() {
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+  console.log(selectedHero.name + ': ' + selectedHero.getHealth());
+  flyingRabbitKick(selectedEnemy);
+  console.log(selectedEnemy.name + ': ' + selectedEnemy.getHealth());
+
+  setTimeout(function() {
+      selectedEnemy = enemy1;
+      console.log('enemy1 ' + selectedEnemy.name);
+      enemy1RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy2;
+      console.log('enemy2 ' + selectedEnemy.name);
+      enemy2RandomRetaliation();
+      console.log(selectedHero.health);
+      selectedEnemy = enemy3;
+      console.log('enemy3 ' + selectedEnemy.name);
+      enemy3RandomRetaliation();
+      console.log(selectedHero.health);
+}, 500);
+});
